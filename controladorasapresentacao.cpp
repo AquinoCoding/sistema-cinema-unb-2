@@ -27,7 +27,7 @@ void ControladoraApresentacaoControle::executar(void) {
             case 2:
 
                 aut = contrApresentacaoAutenticacao->autenticar(&email);
-                if(aut == true) { // Usuario já cadastrado
+                if(aut == true) { // Usuario jï¿½ cadastrado
                     bool apresentacao_case2 = true;
                     while(apresentacao_case2) {
                         CLR_SCR;
@@ -41,7 +41,7 @@ void ControladoraApresentacaoControle::executar(void) {
                         cout << "\t7 - Listar suas propostas de aluguel." << endl;
                         cout << "\t8 - Dados da(s) sua(s) proposta(s) de aluguel." << endl;
                         cout << "\t9 - Descadastrar proposta de aluguel." << endl;
-                        cout << "\t10 - Propostas de aluguel associadas ao imóvel." << endl;
+                        cout << "\t10 - Propostas de aluguel associadas ao imï¿½vel." << endl;
                         cout << "\t11 - Voltar para pagina inicial" << endl;
                         cout << "\t12 - Encerrar sessao.\n";
 
@@ -88,7 +88,7 @@ void ControladoraApresentacaoControle::executar(void) {
                                 break;
 
                             case 10:
-                                cout << "\tPropostas de aluguel associadas ao imóvel nao foi implementado ainda." << endl;
+                                cout << "\tPropostas de aluguel associadas ao imï¿½vel nao foi implementado ainda." << endl;
                                 break;
 
                             case 11:
@@ -98,7 +98,7 @@ void ControladoraApresentacaoControle::executar(void) {
                             case 12:
                                 CLR_SCR;
                                 cout << "\n\t#####################" << endl;
-                                cout << "\t###### Goodbya ######" << endl;
+                                cout << "\t###### Goodbye ######" << endl;
                                 cout << "\t#####################" << endl;
                                 apresentacao = false;
                                 apresentacao_case2 = false;
@@ -142,9 +142,6 @@ void ControladoraApresentacaoControle::executar(void) {
 }
 
 
-
-
-
 bool ControladoraApresentacaoAutenticacao::autenticar(Email *email) {
     Senha senha;
     char linha1[80], linha2[80];
@@ -173,37 +170,52 @@ bool ControladoraApresentacaoAutenticacao::autenticar(Email *email) {
 
 // ------------------------- ControladoraApresentacaoUsuario ---------------------------
 
-
-void ControladoraApresentacaoUsuario::cadastrar() {
-    string campo1, campo2, campo3, campo4;
-    Usuario usuario;
+void ControladoraApresentacaoParticipante::cadastrar() {
+    string campo1, campo2, campo3, campo4, campo5, campo6, campo7;
+    Matricula matricula;
     Nome nome;
+    Nome sobrenome;
     Email email;
     Senha senha;
     Telefone telefone;
+    Cargo cargo;
 
 
     cout << "\nPreencha os seguintes campos \n";
-    cout << "\tNome: ";
+    cout << "\nMatricula: ";
     //cin >> campo1;
     cin.ignore();
     getline(cin, campo1);
 
-    cout << "\tE-mail: ";
+    cout << "\nNome: ";
     cin >> campo2;
     //cin.ignore();
     //getline(cin, campo2);
 
-    cout << "\tSenha: ";
+    cout << "\nSobrenome: ";
     cin >> campo3;
     //cin.ignore();
     //getline(cin, campo3);
 
-    cout << "\tTelefone: ";
+    cout << "\nEmail: ";
     cin >> campo4;
     //cin.ignore();
     //getline(cin, campo4);
 
+    cout << "\nSenha: ";
+    cin >> campo5;
+    //cin.ignore();
+    //getline(cin, campo4);
+
+    cout << "\nTelefone: ";
+    cin >> campo6;
+    //cin.ignore();
+    //getline(cin, campo4);
+
+    cout << "\nCargo: ";
+    cin >> campo7;
+    //cin.ignore();
+    //getline(cin, campo4);
 
     try{
         nome.setValor(string(campo1));
@@ -233,11 +245,11 @@ void ControladoraApresentacaoUsuario::cadastrar() {
 
 // ------------------- ControladoraApresentacaoImoveis ---------------------------
 
-void ControladoraApresentacaoImoveis::mostrarImoveis() {
+void ControladoraApresentacaoTipos::Tipos() {
     CLR_SCR;
-    cout << "\nImoveis disponiveis: ";
+    cout << "\nTipos disponiveis: ";
 
-    contrInterfaceServicoImoveis->mostrarImoveisD();
+    contrInterfaceServicoTipos->Tipos();
 
     cout << "\n\tEntrer para voltar a pagina inicial....";
     getch();
@@ -245,6 +257,7 @@ void ControladoraApresentacaoImoveis::mostrarImoveis() {
 
 
 void ControladoraApresentacaoImoveis::cadastrarPropostaApresentacao() {
+    
     string campo1, campo2;
     int campo3;
     float campo4;
@@ -337,7 +350,7 @@ void ControladoraApresentacaoImoveis::cadastrar(Email *email) {
     cin.ignore();
     getline(cin, campo5);
 
-    cout << "\tValor de diaria mínimo: ";
+    cout << "\tValor de diaria mï¿½nimo: ";
     cin >> campo7;
 
     srand(21112);

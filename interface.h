@@ -61,7 +61,7 @@ class InterfaceServicoUsuario {
 
 class InterfaceServicoImoveis {
     public:
-        virtual void mostrarImoveisD() = 0;
+        virtual void mostrarTiposD() = 0;
         virtual bool cadastrarImovel(Imovel) = 0;
         //virtual bool descadastrarImovel(Imovel) = 0;
         //virtual bool editarDadosImovel(Imovel) = 0;

@@ -1,6 +1,6 @@
 #include "containers.h"
 
-// --------------------------- Usuário ---------------------------
+// --------------------------- Usuï¿½rio ---------------------------
 
 ContainerUsuario* ContainerUsuario::instancia = nullptr;
 
@@ -62,7 +62,7 @@ bool ContainerUsuario::atualizar(Usuario usuario){
     return false;
 }
 
-// --------------------------- Imóvel ---------------------------
+// --------------------------- Imï¿½vel ---------------------------
 
 ContainerImovel* ContainerImovel::instancia = nullptr;
 
@@ -84,7 +84,7 @@ bool ContainerImovel::incluir(Imovel imovel){
     return true;
 }
 
-void ContainerImovel::mostrarImoveis() {
+void ContainerImovel::mostrarTipos() {
     int cont = 1;
 
     for(list<Imovel>::iterator elemento = container.begin(); elemento != container.end(); elemento++){

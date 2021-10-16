@@ -84,15 +84,17 @@
 1620355550 source:c:\users\windoows7\desktop\c++\trabalho2\containers.cpp
 	"containers.h"
 
-1620352958 source:/home/iahobuk/Documentos/TrabalhoTP1/trabalho2/dominios.cpp
-	<string>
-	<stdexcept>
-	<ctype.h>
+1634084895 source:/home/iahobuk/Documentos/TrabalhoTP1/trabalho2/dominios.cpp
 	"dominios.h"
-
-1634061123 /home/iahobuk/Documentos/TrabalhoTP1/trabalho2/dominios.h
 	<iostream>
+	<stdio.h>
 	<string>
+	<string.h>
+	<ctype.h>
+	<stdlib.h>
+
+1634084920 /home/iahobuk/Documentos/TrabalhoTP1/trabalho2/dominios.h
+	<stdexcept>
 
 1619214066 source:/home/iahobuk/Documentos/TrabalhoTP1/trabalho2/entidades.cpp
 	"entidades.h"

@@ -18,36 +18,38 @@
 using namespace std;
 
 
-//------------- Classe controladora de apresentação controle -------------
+//------------- Classe controladora de apresentaï¿½ï¿½o controle -------------
 
 class ControladoraApresentacaoControle {
     private:
         Email email;
         // Ponteiros Necessarios para Interface
         InterfaceApresentacaoAutenticacao *contrApresentacaoAutenticacao;
-        InterfaceApresentacaoUsuario *contrInterfaceApresentacaoUsuario;
-        InterfaceApresentacaoImoveis *contrInterfaceApresentacaoImoveis;
+        InterfaceApresentacaoParticipante *contrInterfaceApresentacaoParticipante;
+        InterfaceApresentacaoTipos *contrInterfaceApresentacaoTipos;
 
     public:
         void executar();
-        // Métodos set para atribuir valores ao ponteiros declarados
+        // Mï¿½todos set para atribuir valores ao ponteiros declarados
         void setContrApresentacaoAutenticacao(InterfaceApresentacaoAutenticacao*);
-        void setContrInterfaceApresentacaoUsuario(InterfaceApresentacaoUsuario*);
-        void setContrInterfaceApresentacaoImoveis(InterfaceApresentacaoImoveis*);
+        void setContrInterfaceApresentacaoParticipante(InterfaceApresentacaoParticipante*);
+        void setContrInterfaceApresentacaoTipos(InterfaceApresentacaoTipos*);
 };
 
 inline void ControladoraApresentacaoControle::setContrApresentacaoAutenticacao(InterfaceApresentacaoAutenticacao* cntr) {
     contrApresentacaoAutenticacao = cntr;
 }
-inline void ControladoraApresentacaoControle::setContrInterfaceApresentacaoUsuario(InterfaceApresentacaoUsuario* cntr) {
-    contrInterfaceApresentacaoUsuario = cntr;
+
+inline void ControladoraApresentacaoControle::setContrInterfaceApresentacaoParticipante(InterfaceApresentacaoParticipante* cntr) {
+    contrInterfaceApresentacaoParticipante = cntr;
 }
-inline void ControladoraApresentacaoControle::setContrInterfaceApresentacaoImoveis(InterfaceApresentacaoImoveis* cntr) {
-    contrInterfaceApresentacaoImoveis = cntr;
+
+inline void ControladoraApresentacaoControle::setContrInterfaceApresentacaoTipos(InterfaceApresentacaoTipos* cntr) {
+    contrInterfaceApresentacaoTipos = cntr;
 }
 
 
-//------------- Classe controladora de apresentação autenticação -------------
+//------------- Classe controladora de apresentaï¿½ï¿½o autenticaï¿½ï¿½o -------------
                                            // Herda a classe abstrata
 class ControladoraApresentacaoAutenticacao:public InterfaceApresentacaoAutenticacao {
     private:
@@ -64,44 +66,44 @@ inline void ControladoraApresentacaoAutenticacao::setControladoraServicoAutentic
 }
 
 
-//------------- Classe controladora de apresentação usuário -------------
+//------------- Classe controladora de apresentaï¿½ï¿½o usuï¿½rio -------------
                                                // Herda a classe abstrata
-class ControladoraApresentacaoUsuario:public InterfaceApresentacaoUsuario {
+class ControladoraApresentacaoParticipante:public InterfaceApresentacaoParticipante {
     private:
-        InterfaceServicoUsuario *contrInterfaceServicoUsuario;
-        InterfaceServicoImoveis *contrInterfaceApresentacaoImoveis;
+        InterfaceServicoParticipante *contrInterfaceServicoParticipante;
+        InterfaceServicoTipos *contrInterfaceApresentacaoTipos;
 
     public:
         void cadastrar();
         //bool descadastrar(Email);
-        void setContrInterfaceServicoUsuario(InterfaceServicoUsuario*);
-        void setContrInterfaceApresentacaoImoveis(InterfaceServicoImoveis*);
+        void setcontrInterfaceServicoParticipante(InterfaceServicoParticipante*);
+        void setContrInterfaceApresentacaoTipos(InterfaceServicoTipos*);
 };
 
-inline void ControladoraApresentacaoUsuario::setContrInterfaceServicoUsuario(InterfaceServicoUsuario *cntr) {
-    contrInterfaceServicoUsuario = cntr;
+inline void ControladoraApresentacaoParticipante::setcontrInterfaceServicoParticipante(InterfaceServicoParticipante *cntr) {
+    contrInterfaceServicoParticipante = cntr;
 }
 
-inline void ControladoraApresentacaoUsuario::setContrInterfaceApresentacaoImoveis(InterfaceServicoImoveis *cntr) {
-    contrInterfaceApresentacaoImoveis = cntr;
+inline void ControladoraApresentacaoParticipante::setContrInterfaceApresentacaoTipos(InterfaceServicoTipos *cntr) {
+    contrInterfaceApresentacaoTipos = cntr;
 }
 
 
-// ------------- Classe controladora de apresentação produtos financeiros -------------
+// ------------- Classe controladora de apresentaï¿½ï¿½o produtos financeiros -------------
                                                 // Herda a classe abstrata
-class ControladoraApresentacaoImoveis:public InterfaceApresentacaoImoveis {
+class ControladoraApresentacaoTipos:public InterfaceApresentacaoTipos {
     private:
-        InterfaceServicoImoveis *contrInterfaceServicoImoveis;
+        InterfaceServicoTipos *contrInterfaceServicoTipos;
     public:
         void cadastrar(Email*);
-        void mostrarImoveis();
+        void mostrarTipos();
         void cadastrarPropostaApresentacao();
         //void cadastrarProposta();
-        void setContrInterfaceServicoImoveis(InterfaceServicoImoveis*);
+        void setContrInterfaceServicoTipos(InterfaceServicoTipos*);
 };
 
-inline void ControladoraApresentacaoImoveis::setContrInterfaceServicoImoveis(InterfaceServicoImoveis* cntr) {
-    contrInterfaceServicoImoveis = cntr;
+inline void ControladoraApresentacaoTipos::setContrInterfaceServicoTipos(InterfaceServicoTipos* cntr) {
+    contrInterfaceServicoTipos = cntr;
 }
 
 

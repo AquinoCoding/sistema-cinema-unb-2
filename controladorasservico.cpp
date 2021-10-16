@@ -12,7 +12,7 @@ bool ControladoraServicoAutenticacao::autenticar(Email email, Senha senha) { // 
 }
 
 
-//----------------- Usuário -----------------
+//----------------- Usuï¿½rio -----------------
 bool ControladoraInterfaceServicoUsuario::cadastrarUsuario(Usuario usuario) { // Armazena os dados em servidor ou lista
     ContainerUsuario *container;
 
