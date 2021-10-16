@@ -1,158 +1,103 @@
 #ifndef ENTIDADES_H_INCLUDED
 #define ENTIDADES_H_INCLUDED
 
+#include <string>
 #include "dominios.h"
 
 
-//--------------------------------------------------------------------------------------------
-// Declarações de classes entidade e implementações de métodos
+//! Classe que representa cada imï¿½vel e seus atributos.
 
-class Usuario {
-private:
-    Nome nome;
-    Endereco endereco;
-    CEP cep;
-    CPF cpf;
-    Senha senha;
-public:
-    void setNome(Nome);
-    Nome getNome();
-    void setEndereco(Endereco);
-    Endereco getEndereco();
-    void setCEP(CEP);
-    CEP getCEP();
-    void setCPF(CPF);
-    CPF getCPF();
-    void setSenha(Senha);
-    Senha getSenha();
-};
+//! Cada imï¿½vel ï¿½ cadastrado por um usuï¿½rio autenticado.
+//! No momento do cadastro do imï¿½vel deve ser fornecido :
+//!
+//! A classe a qual o imï¿½vel pertence. (apartamento, casa ou quarto.)(Domï¿½nio classe)
+//! Descriï¿½ï¿½o do imï¿½vel.  (Domï¿½nio Descriï¿½ï¿½o)
+//! Nï¿½mero mï¿½ximo de hï¿½spedes. (Domï¿½nio Nï¿½mero)
+//! Data inicial do perï¿½odo de disponibilidade. (Domï¿½nio Data)
+//! Data final do perï¿½odo de disponibilidade. (Domï¿½nio Data)
+//! Valor de diï¿½ria mï¿½nimo. (Domï¿½nio Moeda)
+//!
+//! Cada atributo deve estar de acordo com as especificaï¿½ï¿½es de formato de cada
+//! Classe Domï¿½nio.
 
-inline void Usuario::setNome(Nome nome){
-    this->nome = nome;
-}
 
-inline Nome Usuario::getNome(){
-    return nome;
-}
-
-inline void Usuario::setEndereco(Endereco endereco){
-    this->endereco = endereco;
-}
-
-inline Endereco Usuario::getEndereco(){
-    return endereco;
-}
-
-inline void Usuario::setCEP(CEP cep){
-    this->cep = cep;
-}
-
-inline CEP Usuario::getCEP(){
-    return cep;
-}
-
-inline void Usuario::setCPF(CPF cpf){
-    this->cpf = cpf;
-}
-
-inline CPF Usuario::getCPF(){
-    return cpf;
-}
-
-inline void Usuario::setSenha(Senha senha){
-    this->senha = senha;
-}
-
-inline Senha Usuario::getSenha(){
-    return senha;
-}
-
-//--------------------------------------------------------------------------------------------
-
-class Conta {
+class Participante {
     private:
-        Numero numero;
-        Agencia agencia;
-        Banco banco;
-        CPF cpf;
+        Matricula matricula;
+        Nome nome;
+        Nome sobrenome;
+        Email email;
+        Senha senha;
+        Telefone telefone;
+        Cargo cargo;
 
     public:
-        void setNumero(Numero);
-        Numero getNumero();
-        void setAgencia(Agencia);
-        Agencia getAgencia();
-        void setBanco(Banco);
-        Banco getBanco();
-        void setCPF(CPF);
-        CPF getCPF();
+        void setMatricula(const Matricula &mat);
+        string getMatricula(void) const{
+            return matricula.getValor();
+        }
+
+        void setNome(const Nome &nom);
+        string getNome(void) const{
+            return nome.getValor();
+        }
+    
+        void setNome(const Nome &sobr);
+        string getNome(void) const{
+            return sobrenome.getValor();
+        }
+
+        void setEmail(const Email &ema);
+        string getEmail(void) const{
+            return email.getValor();
+        }
+
+        void setSenha(const Senha &sen);
+        string getSenha(void) const{
+            return senha.getValor();
+        }
+
+        void setTelefone(const Telefone &tel);
+        string getTelefone(void) const{
+            return telefone.getValor();
+        }
+       
+
+        void setCargo(const Cargo &carg);
+        string getCargo(void) const{
+            return cargo.getValor();
+        }
+    
 };
 
-inline void Conta::setNumero(Numero numero){
-    this->numero = numero;
+// Definiï¿½ï¿½es de Usuario
+
+inline void Participante::setMatricula(const Matricula &mat){
+    this->matricula = mat;
 }
 
-inline Numero Conta::getNumero(){
-    return numero;
+inline void Participante::setNome(const Nome &nom){
+    this->nome = nom;
 }
 
-inline void Conta::setAgencia(Agencia agencia){
-    this->agencia = agencia;
+inline void Participante::setNome(const Nome &sobr){
+    this->sobrenome = sobr;
 }
 
-inline Agencia Conta::getAgencia(){
-    return agencia;
+inline void Participante::setEmail(const Email &ema){
+    this->email = ema;
 }
 
-inline void Conta::setBanco(Banco banco){
-    this->banco = banco;
+inline void Participante::setSenha(const Senha &sen){
+    this->senha = sen;
 }
 
-inline Banco Conta::getBanco(){
-    return banco;
+inline void Participante::setTelefone(const Telefone &tel){
+    this->telefone = tel;
 }
 
-inline void Conta::setCPF(CPF cpf){
-    this->cpf = cpf;
-}
-
-inline CPF Conta::getCPF(){
-    return cpf;
-}
-
-//--------------------------------------------------------------------------------------------
-
-class Aplicacao {
-    private:
-        Codigo codigo;
-    public:
-        void setCodigo(Codigo);
-        Codigo getCodigo();
-};
-
-inline void Aplicacao::setCodigo(Codigo codigo){
-    this->codigo = codigo;
-}
-
-inline Codigo Aplicacao::getCodigo(){
-    return codigo;
-}
-
-//--------------------------------------------------------------------------------------------
-
-class Produto {
-    private:
-        Codigo codigo;
-    public:
-        void setCodigo(Codigo);
-        Codigo getCodigo();
-};
-
-inline void Produto::setCodigo(Codigo codigo){
-    this->codigo = codigo;
-}
-
-inline Codigo Produto::getCodigo(){
-    return codigo;
+inline void Participante::setCargo(const Cargo &carg){
+    this->cargo = carg;
 }
 
 #endif // ENTIDADES_H_INCLUDED

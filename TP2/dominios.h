@@ -1,111 +1,357 @@
 #ifndef DOMINIOS_H_INCLUDED
 #define DOMINIOS_H_INCLUDED
-
-#include<stdexcept>
+#include <stdexcept>
 
 using namespace std;
 
-//--------------------------------------------------------------------------------------------
-// Declarações de classes domínio e implementações de métodos.
+/// Domï¿½nio Capacidade.
 
-class Dominio {
+///
+/// Classe Capacidade.
+///
+/// Regras de formato:
+/// - Valor ï¿½ valido caso seja igual a um dos seguintes valores: 100, 200, 300, 400 ou 500.
+///
+
+class Capacidade { // octavio - 190094087
     private:
-        string valor;
-    protected:
-        virtual void validar(string) = 0;
+        float capacidade;
+        bool validar(float);
     public:
+///
+///@param Valor capacidade.
+///
+///@throw invalid_argument. Capacidade invï¿½lida caso o valor fornecido nï¿½o seja uma palavra presente nas regras de formato da classe.
+///
+        void setValor(float);
+///
+/// @return Capacidade vï¿½lida.
+///
+        float getValor() const {
+            return capacidade;
+        }
+};
+
+/// Domï¿½nio Cargo.
+
+///
+/// Classe Cargo.
+///
+/// Regras de formato:
+/// - Valor ï¿½ vï¿½lido caso seja igual a um dos seguintes valores: ator, coreï¿½grafo, figurinista, maquiador, sonoplasta ou iluminador.
+///
+
+class Cargo { // octavio - 190094087
+    private:
+        string cargo;
+        bool validar(string);
+    public:
+//
+///@param Valor cargo.
+///
+///@throw invalid_argument. Cargo ï¿½ invï¿½lido caso nï¿½o seja palavra presente nas regras de formato da classe.
+///
         void setValor(string);
-        string getValor() const;
+///
+/// @return Cargo vï¿½lido.
+///
+		string getValor() const {
+            return cargo;
+        }
 };
 
-inline void Dominio::setValor(string valor){
-    validar(valor);
-    this->valor = valor;
-}
+/// Domï¿½nio Classificacï¿½o.
 
-inline string Dominio::getValor() const {
-    return valor;
-}
+///
+/// Classe Classificacao.
+///
+/// Regras de formato:
+/// - Valor ï¿½ vï¿½lido caso seja igual a um dos seguintes valores: 10, 12, 14, 16 ou 18.
+///
 
-//--------------------------------------------------------------------------------------------
-
-class CPF:public Dominio {
+class Classificacao { // octavio - 190094087
     private:
-        static const long unsigned int TAMANHO_MAXIMO = 5;
-    protected:
-        void validar(string);
+        string classificacao;
+        bool validar(string);
+    public:
+///
+///@param Valor classificaï¿½ao.
+///
+///@throw invalid_argument. Classificaï¿½ï¿½o ï¿½ invï¿½lida caso nï¿½o seja palavra presente nas regras de formato da classe.
+///
+        void setValor(string);
+///
+/// @return Classificaï¿½ï¿½o.
+///
+        string getValor() const{
+            return classificacao;
+        }
 };
 
-//--------------------------------------------------------------------------------------------
+/// Domï¿½nio Cï¿½digo.
 
-class Senha:public Dominio {
+///
+/// Classe Codigo.
+///
+/// Regras de formato:
+/// - Valor ï¿½ vï¿½lido caso contenha seis caracteres sendo os dois primeiros letras maiï¿½sculas e os quatro ï¿½ltimos dï¿½gitos de 0 a 9.
+///
+
+class Codigo {  // Lorenzo - 200022610
     private:
-        static const long unsigned int TAMANHO_MAXIMO = 5;
-    protected:
-        void validar(string);
+        string codigo;
+        bool validar(string);
+    public:
+///
+///@param Valor codigo.
+///
+///@throw invalid_argument. Cï¿½digo invï¿½lido caso o valor fornecido nï¿½o esteja de acordo com as regras de formato.
+///
+        void setValor(string);
+///
+/// @return Cï¿½digo vï¿½lido.
+///
+        string getValor() const{
+            return codigo;
+            }
 };
 
-//--------------------------------------------------------------------------------------------
+/// Domï¿½nio Data.
 
-class Codigo:public Dominio {
+///
+/// Classe Data: composta por dia, mï¿½s e ano.
+///
+/// Regras de formato:
+/// - Valor ï¿½ vï¿½lido caso contenha oito caracteres sendo: dia (dï¿½gitos de 01 a 31), mï¿½s (dï¿½gitos de 01 a 12) e ano (dï¿½gitos de 2000 a 9999).
+///
+
+class Data {    // Lorenzo - 200022610
     private:
-        static const long unsigned int TAMANHO_MAXIMO = 5;
-    protected:
-        void validar(string);
+        string data;
+        bool validar(string);
+    public:
+///
+///@param Valor da data com dia mï¿½s e ano.
+///
+///@throw invalid_argument. Data invï¿½lida caso o valor fornecido nï¿½o esteja de acordo com as regras de formato da classe.
+///
+        void setValor (string);
+///
+/// @return Data vï¿½lida.
+///
+        string getValor() const{
+            return data;
+        }
 };
 
-//--------------------------------------------------------------------------------------------
+/// Domï¿½nio Email.
 
-class Numero:public Dominio {
+///
+/// Classe Email.
+///
+/// Regras de formato:
+/// - Valor vï¿½lido ï¿½ composto por duas partes: parte local (pode ter atï¿½ 64 caracteres) e parte domï¿½nio (pode ter atï¿½ 255 caracteres).
+/// - Os caracteres podem ser alfa numï¿½ricos, sendo letras maiï¿½sculas ou minï¿½sculas ou dï¿½gitos de 0 a 9, bem como os seguintes caracteres: !#$%&'*+-/=?^_'{|}~
+/// - O caractere pode ser ponto (.), desde que nï¿½o seja o primeiro ou o ï¿½ltimo caractere e que nï¿½o ocorra em sequï¿½ncia.
+///
+
+class Email {   // Lorenzo - 200022610
     private:
-        static const long unsigned int TAMANHO_MAXIMO = 5;
-    protected:
-        void validar(string);
+        string email;
+        bool validar(string);
+    public:
+///
+///@param Valor do endereï¿½o de e-mail.
+///
+///@throw invalid_argument. E-mail invï¿½lido caso o valor fornecido nï¿½o esteja de acordo com as regras de formato da classe.
+///
+        void setValor(string);
+///
+/// @return E-mail vï¿½lido.
+///
+        string getValor() const{
+            return email;
+        }
 };
 
-//--------------------------------------------------------------------------------------------
+/// Domï¿½nio Horï¿½rio.
 
-class Nome:public Dominio {
+///
+/// Classe Horario.
+///
+/// Regras de formato:
+/// - Valor ï¿½ vï¿½lido caso contenha quatro caracteres sendo os dois primeiros dï¿½gitos de 00 a 23 e os dois ï¿½ltimos dï¿½gitos deve ser um dos seguintes valores: 00, 15 30 ou 45.
+///
+
+class Horario { // Eder - 170140636
     private:
-        static const long unsigned int TAMANHO_MAXIMO = 5;
-    protected:
-        void validar(string);
+        static const int LIMITE_MIN = 00;
+        static const int LIMITE_MAX = 23;
+        string horario;
+        bool validar(string);
+    public:
+///
+///@param Horario em formato de horas e minutos.
+///
+///@throw invalid_argument. Horï¿½rio invï¿½lido caso o valor fornecido nï¿½o esteja de acordo com as regras de formato da classe.
+///
+        void setValor(string horario);
+///
+/// @return Horï¿½rio vï¿½lido.
+///
+        string getValor() const{
+            return horario;
+        }
 };
 
-//--------------------------------------------------------------------------------------------
+/// Domï¿½nio Matrï¿½cula.
 
-class Endereco:public Dominio {
+///
+/// Classe Matricula.
+///
+/// Regras de formato:
+/// - Valor ï¿½ vï¿½lido caso contenha cinco dï¿½gitos de 0 a 9.
+/// - Nï¿½o podem existir dï¿½gitos duplicados.
+///
+
+class Matricula { // Eder - 170140636
     private:
-        static const long unsigned int TAMANHO_MAXIMO = 5;
-    protected:
-        void validar(string);
+        string matricula;
+        bool validar(string);
+    public:
+///
+///@param Nï¿½mero de matrï¿½cula com nove dï¿½gitos.
+///
+///@throw invalid_argument. Nï¿½mero de matrï¿½cula invï¿½lido caso o valor fornecido nï¿½o esteja de acordo com as regras de formato da classe.
+///
+        void setValor(string matricula);
+///
+/// @return Matrï¿½cula vï¿½lida.
+///
+        string getValor() const{
+            return matricula;
+        }
 };
 
-//--------------------------------------------------------------------------------------------
+/// Domï¿½nio Nome.
 
-class CEP:public Dominio {
+///
+/// Classe Nome.
+///
+/// Regras de formato:
+/// - Valor vï¿½lido deve conter de 5 a 20 caracteres, sendo letras maiï¿½sculas ou minï¿½sculas de A a Z.
+/// - Ponto (.) deve ser precedido por letra.
+/// - Pode conter espaï¿½o em branco, porï¿½m nï¿½o podem ocorrer espaï¿½os em sequï¿½ncia.
+/// - Primeira letra de cada termo deve ser maiï¿½scula (A a Z).
+///
+
+class Nome {    // Lorenzo - 200022610
     private:
-        static const long unsigned int TAMANHO_MAXIMO = 5;
-    protected:
-        void validar(string);
+        string nome;
+        bool validar(string);
+    public:
+///
+///@param Nome com 5 a 20 caracteres.
+///
+///@throw invalid_argument. Invï¿½lido caso nome fornecido nï¿½o esteja de acordo com as regras de formato da classe.
+///
+        void setValor(string);
+///
+/// @return Nome vï¿½lido.
+///
+        string getValor() const{
+            return nome;
+        }
 };
 
-//--------------------------------------------------------------------------------------------
+/// Domï¿½nio Senha.
 
-class Agencia:public Dominio {
+///
+/// Classe Senha.
+///
+/// Regras de formato:
+/// - Valor vï¿½lido deve conter oito caracteres, sendo cada caractere letras maiï¿½sculas ou minï¿½sculas de A a Z, dï¿½gito de 0 a 9 ou caractere especial.
+/// - Os caracteres especiais vï¿½lidos sï¿½o: ! @ # $ % & ?
+/// - Nï¿½o podem existir caracteres repetidos.
+/// - Deve existir pelo menos uma letra (maiï¿½scula ou minï¿½scula), um dï¿½gito ou caractere especial.
+///
+
+class Senha { 
     private:
-        static const long unsigned int TAMANHO_MAXIMO = 5;
-    protected:
-        void validar(string);
+        string senha;
+        bool validar(string);
+    public:
+///
+///@param Senha com caracteres alfanumï¿½ricos e caracteres especiais.
+///
+///@throw invalid_argument. Senha invï¿½lida caso valor fornecido nï¿½o esteja de acordo com as regras de formato da classe.
+///
+        void setValor(string);
+///
+/// @return Senha alfanumï¿½rica com caractere especial.
+///
+        string getValor() const {
+            return senha;
+        }
 };
 
-//--------------------------------------------------------------------------------------------
+/// Domï¿½nio Telefone.
 
-class Banco:public Dominio {
+///
+/// Classe Telefone.
+///
+/// Regras de formato:
+/// - Valor vï¿½lido ï¿½ composto por onze dï¿½gitos, sendo os dois primeiros correspondentes ao cï¿½digo de ï¿½rea.
+/// - O cï¿½digo deve ser um dos seguintes: 11, 12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 24, 27, 28, 32, 33, 34, 35, 37, 38, 41, 42, 43, 44, 45, 46, 47, 48, 49, 51, 53, 54, 55, 61, 62, 63, 64, 65, 66, 67, 68, 69, 71, 73, 74, 75, 77, 79, 81, 82, 83, 84, 85, 86, 87, 88, 89, 91, 92, 93, 94, 95, 96, 97, 98, 99.
+/// - Os nove ï¿½ltimos dï¿½gitos podem ser de 0 a 9.
+/// - Nï¿½o existe nï¿½mero de telefone 000000000.
+///
+
+class Telefone {
     private:
-        static const long unsigned int TAMANHO_MAXIMO = 5;
-    protected:
-        void validar(string);
+        string telefone;
+        bool validar(string);
+    public:
+///
+///@param Nï¿½mero de telefone com cï¿½digo de ï¿½rea.
+///
+///@throw invalid_argument. Invï¿½lido caso valor fornecido nï¿½o esteja de acordo com as regras de formato da classe.
+///
+        void setValor(string);
+///
+/// @return Telefone com cï¿½digo de ï¿½rea.
+///
+        string getValor() const{
+            return telefone;
+        }
 };
 
-#endif // DOMINIOS_H_INCLUDED
+/// Domï¿½nio Tipo.
+
+///
+/// Classe Tipo.
+///
+/// Regras de formato:
+/// - Valor vï¿½lido deve uma das seguintes palavras: auto, comï¿½dia, drama, farsa, melodrama, monï¿½logo, musical, ï¿½pera, revista.
+///
+
+class Tipo { 
+    private:
+        string tipo;
+        bool validar(string);
+    public:
+///
+///@param Valor Tipo.
+///
+///@throw invalid_argument. Invï¿½lido caso o tipo fornecido nï¿½o esteja de acordo com as regras de formato da classe.
+///
+        void setValor(string tipo);
+///
+/// @return Tipo.
+///
+        string getValor() const{
+            return tipo;
+        }
+};
+
+#endif // ENTIDADES_H_INCLUDED

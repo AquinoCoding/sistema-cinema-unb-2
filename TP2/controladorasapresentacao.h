@@ -9,11 +9,11 @@
 
 
 //--------------------------------------------------------------------------------------------
-// Declarações de classes controladoras e implementações de métodos.
+// Declaraï¿½ï¿½es de classes controladoras e implementaï¿½ï¿½es de mï¿½todos.
 
 class CntrApresentacaoControle{
     private:
-        CPF cpf;
+        Email email;
         IApresentacaoAutenticacao *cntrApresentacaoAutenticacao;
         IApresentacaoPessoal *cntrApresentacaoPessoal;
         IApresentacaoProdutosFinanceiros *cntrApresentacaoProdutosFinanceiros;

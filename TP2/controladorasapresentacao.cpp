@@ -1,7 +1,7 @@
 #include "controladorasapresentacao.h"
 
 //--------------------------------------------------------------------------------------------
-// Implementações dos métodos de classes controladoras.
+// Implementaï¿½ï¿½es dos mï¿½todos de classes controladoras.
 
 void CntrApresentacaoControle::executar(){
 
@@ -9,18 +9,18 @@ void CntrApresentacaoControle::executar(){
 
     char texto1[]="Selecione um dos servicos : ";
     char texto2[]="1 - Acessar sistema.";
-    char texto3[]="2 - Cadastrar usuario.";
-    char texto4[]="3 - Acessar dados sobre produtos financeiros.";
-    char texto5[]="4 - Encerrar execucao do sistema.";
+    char texto3[]="2 - Cadastrar Participante.";
+    char texto4[]="4 - Encerrar execucao do sistema.";
 
-    // Mensagens a serem apresentadas na tela de seleção de serviço.
+    // Mensagens a serem apresentadas na tela de seleï¿½ï¿½o de serviï¿½o.
 
     char texto6[]="Selecione um dos servicos : ";
-    char texto7[]="1 - Selecionar servicos de pessoal.";
-    char texto8[]="2 - Selecionar servicos relacionados a produtos financeiros.";
-    char texto9[]="3 - Encerrar sessao.";
+    char texto7[]="1 - Selecionar PeÃ§as Disponiveis.";
+    char texto8[]="2 - Selecionar Salas.";
+    char texto9[]="3 - Selecionar SessÃ£o.";
+    char texto10[]="4 - Encerrar Sistema.";
 
-    char texto10[]="Falha na autenticacao. Digite algo para continuar.";                        // Mensagem a ser apresentada.
+    char texto11[]="Falha na autenticacao. Digite algo para continuar.";                        // Mensagem a ser apresentada.
 
     int campo;                                                                                  // Campo de entrada.
 
@@ -28,7 +28,7 @@ void CntrApresentacaoControle::executar(){
 
     getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
 
-    bool apresentar = true;                                                                     // Controle de laço.
+    bool apresentar = true;                                                                     // Controle de laï¿½o.
 
     while(apresentar){
 
@@ -39,32 +39,31 @@ void CntrApresentacaoControle::executar(){
         mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                             // Imprime nome do campo.
         mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                             // Imprime nome do campo.
         mvprintw(linha/4 + 6,coluna/4,"%s",texto4);                                             // Imprime nome do campo.
-        mvprintw(linha/4 + 8,coluna/4,"%s",texto5);                                             // Imprime nome do campo.
 
         noecho();
-        campo = getch() - 48;                                                                   // Leitura do campo de entrada e conversão de ASCII.
+        campo = getch() - 48;                                                                   // Leitura do campo de entrada e conversï¿½o de ASCII.
         echo();
 
         switch(campo){
-            case 1: if(cntrApresentacaoAutenticacao->autenticar(&cpf)){                         // Solicita autenticação.
-                        bool apresentar = true;                                                 // Controle de laço.
+            case 1: if(cntrApresentacaoAutenticacao->autenticar(&cpf)){                         // Solicita autenticaï¿½ï¿½o.
+                        bool apresentar = true;                                                 // Controle de laï¿½o.
                         while(apresentar){
 
-                            // Apresenta tela de seleção de serviço.
+                            // Apresenta tela de seleï¿½ï¿½o de serviï¿½o.
 
                             clear();                                                            // Limpa janela.
                             mvprintw(linha/4,coluna/4,"%s",texto6);                             // Imprime nome do campo.
                             mvprintw(linha/4 + 2,coluna/4,"%s",texto7);                         // Imprime nome do campo.
                             mvprintw(linha/4 + 4,coluna/4,"%s",texto8);                         // Imprime nome do campo.
-                            mvprintw(linha/4 + 6,coluna/4,"%s",texto9);                         // Imprime nome do campo.                                    // Apresenta tela de seleção de serviço.
+                            mvprintw(linha/4 + 6,coluna/4,"%s",texto9);                         // Imprime nome do campo.                                    // Apresenta tela de seleï¿½ï¿½o de serviï¿½o.
                             noecho();
-                            campo = getch() - 48;                                               // Leitura do campo de entrada e conversão de ASCII.
+                            campo = getch() - 48;                                               // Leitura do campo de entrada e conversï¿½o de ASCII.
                             echo();
 
                             switch(campo){
-                                case 1: cntrApresentacaoPessoal->executar(cpf);                 // Solicita serviço de pessoal.
+                                case 1: cntrApresentacaoPessoal->executar(cpf);                 // Solicita serviï¿½o de pessoal.
                                         break;
-                                case 2: cntrApresentacaoProdutosFinanceiros->executar(cpf);     // Solicita serviço de produto financeiro.
+                                case 2: cntrApresentacaoProdutosFinanceiros->executar(cpf);     // Solicita serviï¿½o de produto financeiro.
                                         break;
                                 case 3: apresentar = false;
                                         break;
@@ -94,7 +93,7 @@ void CntrApresentacaoControle::executar(){
 
 bool CntrApresentacaoAutenticacao::autenticar(CPF *cpf){
 
-    // Mensagens a serem apresentadas na tela de autenticação.
+    // Mensagens a serem apresentadas na tela de autenticaï¿½ï¿½o.
 
     char texto1[]="Digite o CPF  : ";
     char texto2[]="Digite a senha: ";
@@ -115,35 +114,35 @@ bool CntrApresentacaoAutenticacao::autenticar(CPF *cpf){
 
     while(true){
 
-        // Apresenta tela de autenticação.
+        // Apresenta tela de autenticaï¿½ï¿½o.
 
         clear();                                                                                // Limpa janela.
         mvprintw(linha/4,coluna/4,"%s",texto1);                                                 // Imprime nome do campo.
-        getstr(campo1);                                                                         // Lê valor do campo.
+        getstr(campo1);                                                                         // Lï¿½ valor do campo.
         mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                             // Imprime nome do campo.
-        getstr(campo2);                                                                         // Lê valor do campo.
+        getstr(campo2);                                                                         // Lï¿½ valor do campo.
 
         try{
             cpf->setValor(string(campo1));                                                      // Atribui valor ao CPF.
-            senha.setValor(string(campo2));                                                     // Atribui Valor à senha.
-            break;                                                                              // Abandona laço em caso de formatos corretos.
+            senha.setValor(string(campo2));                                                     // Atribui Valor ï¿½ senha.
+            break;                                                                              // Abandona laï¿½o em caso de formatos corretos.
         }
-        catch(invalid_argument &exp){                                                           // Captura exceção devido a formato incorreto.
+        catch(invalid_argument &exp){                                                           // Captura exceï¿½ï¿½o devido a formato incorreto.
             clear();                                                                            // Limpa janela.
             mvprintw(linha/4,coluna/4,"%s",texto3);                                             // Informa formato incorreto.
             noecho();
-            getch();                                                                            // Lê caracter digitado.
+            getch();                                                                            // Lï¿½ caracter digitado.
             echo();
         }
     }
-    return (cntr->autenticar(*cpf, senha));                                                     // Solicita serviço de autenticação.
+    return (cntr->autenticar(*cpf, senha));                                                     // Solicita serviï¿½o de autenticaï¿½ï¿½o.
 }
 
 //--------------------------------------------------------------------------------------------
 
 void CntrApresentacaoPessoal::executar(CPF cpf){
 
-    // Mensagens a serem apresentadas na tela de seleção de serviço..
+    // Mensagens a serem apresentadas na tela de seleï¿½ï¿½o de serviï¿½o..
 
     char texto1[]="Selecione um dos servicos : ";
     char texto2[]="1 - Consultar dados pessoais.";
@@ -155,20 +154,20 @@ void CntrApresentacaoPessoal::executar(CPF cpf){
 
     getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
 
-    bool apresentar = true;                                                                     // Controle de laço.
+    bool apresentar = true;                                                                     // Controle de laï¿½o.
 
     echo();                                                                                     // Habilita eco.
 
     while(apresentar){
 
-        // Apresenta tela de selação de serviço.
+        // Apresenta tela de selaï¿½ï¿½o de serviï¿½o.
 
         clear();                                                                                // Limpa janela.
         mvprintw(linha/4,coluna/4,"%s",texto1);                                                 // Imprime nome do campo.
         mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                             // Imprime nome do campo.
         mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                             // Imprime nome do campo.
         noecho();
-        campo = getch() - 48;                                                                   // Leitura do campo de entrada e conversão de ASCII.
+        campo = getch() - 48;                                                                   // Leitura do campo de entrada e conversï¿½o de ASCII.
         echo();
 
         switch(campo){
@@ -202,7 +201,7 @@ void CntrApresentacaoPessoal::cadastrar(){
     char campo1[80], campo2[80], campo3[80], campo4[80], campo5[80];                            // Cria campos para entrada dos dados.
     char campo6[80], campo7[80], campo8[80];                                                    // Cria campos para entrada dos dados.
 
-    // Instancia os domínios.
+    // Instancia os domï¿½nios.
 
     Nome nome;
     Endereco endereco;
@@ -223,21 +222,21 @@ void CntrApresentacaoPessoal::cadastrar(){
 
     mvprintw(linha/4,coluna/4,"%s",texto1);                                                     // Imprime nome do campo.
     mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                                 // Imprime nome do campo.
-    getstr(campo1);                                                                             // Lê valor do campo.
+    getstr(campo1);                                                                             // Lï¿½ valor do campo.
     mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                                 // Imprime nome do campo.
-    getstr(campo2);                                                                             // Lê valor do campo.
+    getstr(campo2);                                                                             // Lï¿½ valor do campo.
     mvprintw(linha/4 + 6,coluna/4,"%s",texto4);                                                 // Imprime nome do campo.
-    getstr(campo3);                                                                             // Lê valor do campo.
+    getstr(campo3);                                                                             // Lï¿½ valor do campo.
     mvprintw(linha/4 + 8,coluna/4,"%s",texto5);                                                 // Imprime nome do campo.
-    getstr(campo4);                                                                             // Lê valor do campo.
+    getstr(campo4);                                                                             // Lï¿½ valor do campo.
     mvprintw(linha/4 + 10,coluna/4,"%s",texto6);                                                // Imprime nome do campo.
-    getstr(campo5);                                                                             // Lê valor do campo.
+    getstr(campo5);                                                                             // Lï¿½ valor do campo.
     mvprintw(linha/4 + 12,coluna/4,"%s",texto7);                                                // Imprime nome do campo.
-    getstr(campo6);                                                                             // Lê valor do campo.
+    getstr(campo6);                                                                             // Lï¿½ valor do campo.
     mvprintw(linha/4 + 14,coluna/4,"%s",texto8);                                                // Imprime nome do campo.
-    getstr(campo7);                                                                             // Lê valor do campo.
+    getstr(campo7);                                                                             // Lï¿½ valor do campo.
     mvprintw(linha/4 + 16,coluna/4,"%s",texto9);                                                // Imprime nome do campo.
-    getstr(campo8);                                                                             // Lê valor do campo.
+    getstr(campo8);                                                                             // Lï¿½ valor do campo.
 
     try{
         nome.setValor(string(campo1));
@@ -274,7 +273,7 @@ void CntrApresentacaoPessoal::cadastrar(){
     conta.setBanco(banco);
     conta.setCPF(cpf);
 
-    // Cadastra usuário e conta.
+    // Cadastra usuï¿½rio e conta.
 
     if(cntrServicoPessoal->cadastrarUsuario(usuario))
         if(cntrServicoProdutosFinanceiros->cadastrarConta(conta)){
@@ -299,11 +298,11 @@ void CntrApresentacaoPessoal::consultarDadosPessoais(){
 
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
-    // Substituir código seguinte pela implementação do método.
+    // Substituir cï¿½digo seguinte pela implementaï¿½ï¿½o do mï¿½todo.
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
 
-    // Mensagens a serem apresentadas na tela de apresentação de dados pessoais.
+    // Mensagens a serem apresentadas na tela de apresentaï¿½ï¿½o de dados pessoais.
 
     int linha,coluna;                                                                           // Dados sobre tamanho da tela.
     getmaxyx(stdscr,linha,coluna);                                                              // Armazena quantidade de linhas e colunas.
@@ -333,7 +332,7 @@ void CntrApresentacaoProdutosFinanceiros::executar(){
 
     echo();                                                                                     // Habilita eco.
 
-    bool apresentar = true;                                                                     // Controle de laço.
+    bool apresentar = true;                                                                     // Controle de laï¿½o.
 
     while(apresentar){
 
@@ -344,7 +343,7 @@ void CntrApresentacaoProdutosFinanceiros::executar(){
         mvprintw(linha/4 + 2,coluna/4,"%s",texto2);                                             // Imprime nome do campo.
         mvprintw(linha/4 + 4,coluna/4,"%s",texto3);                                             // Imprime nome do campo.
         noecho();
-        campo = getch() - 48;                                                                   // Leitura do campo de entrada e conversão de ASCII.
+        campo = getch() - 48;                                                                   // Leitura do campo de entrada e conversï¿½o de ASCII.
         echo();
 
         switch(campo){
@@ -379,7 +378,7 @@ void CntrApresentacaoProdutosFinanceiros::executar(CPF){
 
     echo();                                                                                     // Habilita eco.
 
-    bool apresentar = true;                                                                     // Controle de laço.
+    bool apresentar = true;                                                                     // Controle de laï¿½o.
 
     echo();                                                                                     // Habilita eco.
 
@@ -397,7 +396,7 @@ void CntrApresentacaoProdutosFinanceiros::executar(CPF){
         mvprintw(linha/4 + 12,coluna/4,"%s",texto7);                                            // Imprime nome do campo.
         mvprintw(linha/4 + 14,coluna/4,"%s",texto8);                                            // Imprime nome do campo.
         noecho();
-        campo = getch() - 48;                                                                   // Leitura do campo de entrada e conversão de ASCII.
+        campo = getch() - 48;                                                                   // Leitura do campo de entrada e conversï¿½o de ASCII.
         echo();
 
         switch(campo){
@@ -425,7 +424,7 @@ void CntrApresentacaoProdutosFinanceiros::consultarConta(){
 
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
-    // Substituir código seguinte pela implementação do método.
+    // Substituir cï¿½digo seguinte pela implementaï¿½ï¿½o do mï¿½todo.
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
 
@@ -448,7 +447,7 @@ void CntrApresentacaoProdutosFinanceiros::cadastrarProdutoInvestimento(){
 
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
-    // Substituir código seguinte pela implementação do método.
+    // Substituir cï¿½digo seguinte pela implementaï¿½ï¿½o do mï¿½todo.
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
 
@@ -471,7 +470,7 @@ void CntrApresentacaoProdutosFinanceiros::descadastrarProdutoInvestimento(){
 
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
-    // Substituir código seguinte pela implementação do método.
+    // Substituir cï¿½digo seguinte pela implementaï¿½ï¿½o do mï¿½todo.
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
 
@@ -494,7 +493,7 @@ void CntrApresentacaoProdutosFinanceiros::consultarProdutoInvestimento(){
 
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
-    // Substituir código seguinte pela implementação do método.
+    // Substituir cï¿½digo seguinte pela implementaï¿½ï¿½o do mï¿½todo.
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
 
@@ -517,7 +516,7 @@ void CntrApresentacaoProdutosFinanceiros::realizarAplicacao(){
 
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
-    // Substituir código seguinte pela implementação do método.
+    // Substituir cï¿½digo seguinte pela implementaï¿½ï¿½o do mï¿½todo.
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
 
@@ -540,7 +539,7 @@ void CntrApresentacaoProdutosFinanceiros::listarAplicacoes(){
 
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
-    // Substituir código seguinte pela implementação do método.
+    // Substituir cï¿½digo seguinte pela implementaï¿½ï¿½o do mï¿½todo.
     //--------------------------------------------------------------------------------------------
     //--------------------------------------------------------------------------------------------
 
