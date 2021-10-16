@@ -171,7 +171,9 @@ bool ControladoraApresentacaoAutenticacao::autenticar(Email *email) {
 // ------------------------- ControladoraApresentacaoUsuario ---------------------------
 
 void ControladoraApresentacaoParticipante::cadastrar() {
+
     string campo1, campo2, campo3, campo4, campo5, campo6, campo7;
+
     Matricula matricula;
     Nome nome;
     Nome sobrenome;
@@ -183,9 +185,9 @@ void ControladoraApresentacaoParticipante::cadastrar() {
 
     cout << "\nPreencha os seguintes campos \n";
     cout << "\nMatricula: ";
-    //cin >> campo1;
-    cin.ignore();
-    getline(cin, campo1);
+    cin >> campo1;
+    //cin.ignore();
+    //getline(cin, campo1);
 
     cout << "\nNome: ";
     cin >> campo2;
@@ -218,10 +220,14 @@ void ControladoraApresentacaoParticipante::cadastrar() {
     //getline(cin, campo4);
 
     try{
-        nome.setValor(string(campo1));
-        email.setValor(string(campo2));
-        senha.setValor(string(campo3));
-        telefone.setValor(string(campo4));
+        matricula.setValor(string(campo1));
+        nome.setValor(string(campo2));
+        sobrenome.setValor(string(campo3));
+        email.setValor(string(campo4));
+        senha.setValor(string(campo5));
+        telefone.setValor(string(campo6));
+        cargo.setValor(string(campo7));
+
     }
     catch(invalid_argument &exp){
         CLR_SCR;
@@ -230,13 +236,16 @@ void ControladoraApresentacaoParticipante::cadastrar() {
         return;
     }
 
-    usuario.setNome(nome);
-    usuario.setEmail(email);
-    usuario.setSenha(senha);
-    usuario.setTelefone(telefone);
+    participante.setMatricula(matricula);
+    participante.setNome(nome);
+    participante.setSobrenome(sobrenome);
+    participante.setEmail(email);
+    participante.setSenha(senha);
+    participante.setTelefone(telefone);
+    participante.setCargo(cargo);
 
 
-    if(contrInterfaceServicoUsuario->cadastrarUsuario(usuario)) {
+    if(contrInterfaceServicoUsuario->cadastrarUsuario(participante)) {
         cout << "\n\tUsuario cadastrado com sucesso!\n\tEntrer para continuar :)\n";
         getch();
     }

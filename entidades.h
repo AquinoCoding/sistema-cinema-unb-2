@@ -5,130 +5,31 @@
 #include "dominios.h"
 
 
-//! Classe que representa cada imóvel e seus atributos.
+//! Classe que representa cada imï¿½vel e seus atributos.
 
-//! Cada imóvel é cadastrado por um usuário autenticado.
-//! No momento do cadastro do imóvel deve ser fornecido :
+//! Cada imï¿½vel ï¿½ cadastrado por um usuï¿½rio autenticado.
+//! No momento do cadastro do imï¿½vel deve ser fornecido :
 //!
-//! A classe a qual o imóvel pertence. (apartamento, casa ou quarto.)(Domínio classe)
-//! Descrição do imóvel.  (Domínio Descrição)
-//! Número máximo de hóspedes. (Domínio Número)
-//! Data inicial do período de disponibilidade. (Domínio Data)
-//! Data final do período de disponibilidade. (Domínio Data)
-//! Valor de diária mínimo. (Domínio Moeda)
+//! A classe a qual o imï¿½vel pertence. (apartamento, casa ou quarto.)(Domï¿½nio classe)
+//! Descriï¿½ï¿½o do imï¿½vel.  (Domï¿½nio Descriï¿½ï¿½o)
+//! Nï¿½mero mï¿½ximo de hï¿½spedes. (Domï¿½nio Nï¿½mero)
+//! Data inicial do perï¿½odo de disponibilidade. (Domï¿½nio Data)
+//! Data final do perï¿½odo de disponibilidade. (Domï¿½nio Data)
+//! Valor de diï¿½ria mï¿½nimo. (Domï¿½nio Moeda)
 //!
-//! Cada atributo deve estar de acordo com as especificações de formato de cada
-//! Classe Domínio.
+//! Cada atributo deve estar de acordo com as especificaï¿½ï¿½es de formato de cada
+//! Classe Domï¿½nio.
 
 
-class Imovel {
+class Participante {
     private:
-        Codigo codigo;
-        Classe classe;
-        Descricao descricao;
-        Endereco endereco;
-        Data data_inicial;
-        Data data_final;
-        Numero hospedes;
-        Moeda valor;
-        Email email;
-
-
-    public:
-        //Imovel(Codigo);
-
-        void setEmail(const Email &eml);
-        string getEmail(void) const{
-            return email.getValor();
-        }
-
-        void setCodigo(const Codigo &codigo);
-        string getCodigo(void) const{
-            return codigo.getValor();
-        }
-
-        void setClasse(const Classe &classe);
-        int getClasse(void) const{
-            return classe.getValor();
-        }
-
-        void setDescricao(const Descricao &descricao);
-        string getDescricao(void) const{
-            return descricao.getValor();
-        }
-
-        void setEndereco(const Endereco &endereco);
-        string getEndereco(void) const{
-            return endereco.getValor();
-        }
-
-        void setDataInicial(const Data &data_init);
-        string getDataInicial(void) const{
-            return data_inicial.getValor();
-        }
-
-        void setDataFinal(const Data &data_fim);
-        string getDataFinal(void) const{
-            return data_final.getValor();
-        }
-
-        void setHospedes(const Numero &hosp);
-        int getHospedes(void) const{
-            return hospedes.getValor();
-        }
-
-
-        void setValor(const Moeda &moed);
-        float getValor(void) const{
-            return valor.getValor();
-        }
-};
-
-
-class Proposta {
-    private:
-        Codigo codigo;
-        Data data_inicial;
-        Data data_final;
-        Numero hospedes;
-        Moeda valor;
-
-    public:
-        void setCodigo(const Codigo &codigo);
-        string getCodigo(void) const{
-            return codigo.getValor();
-        }
-
-        void setDataInicial(const Data &data_init);
-        string getDataInicial(void) const{
-            return data_inicial.getValor();
-        }
-
-        void setDataFinal(const Data &data_fim);
-        string getDataFinal(void) const{
-            return data_final.getValor();
-        }
-
-        void setHospedes(const Numero &hosp);
-        int getHospedes(void) const{
-            return hospedes.getValor();
-        }
-
-
-        void setValor(const Moeda &moed);
-        float getValor(void) const{
-            return valor.getValor();
-        }
-
-};
-
-
-class Usuario {
-    private:
+        Matricula matricula;
         Nome nome;
+        Nome sobrenome;
         Email email;
         Senha senha;
         Telefone telefone;
+        Cargo cargo;
 
     public:
         void setNome(const Nome &nom);
@@ -150,10 +51,11 @@ class Usuario {
         string getTelefone(void) const{
             return telefone.getValor();
         }
+        
 };
 
 
-// Definições de Imovel
+// Definiï¿½ï¿½es de Imovel
 
 inline void Imovel::setEmail(const Email &eml) {
     this->email = eml;
@@ -191,7 +93,7 @@ inline void Imovel::setValor(const Moeda &moed) {
     this->valor = moed;
 }
 
-// Definiçoes de Proposta
+// Definiï¿½oes de Proposta
 inline void Proposta::setCodigo(const Codigo &cod){
     this->codigo = cod;
 }
@@ -212,7 +114,7 @@ inline void Proposta::setValor(const Moeda &moed) {
     this->valor = moed;
 }
 
-// Definições de Usuario
+// Definiï¿½ï¿½es de Usuario
 inline void Usuario::setNome(const Nome &nom){
     this->nome = nom;
 }

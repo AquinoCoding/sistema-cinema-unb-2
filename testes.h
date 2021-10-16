@@ -1,5 +1,5 @@
-/** UnB - Universidade de Brasília
- *  CIC - Departamento de Ciências da Computação
+/** UnB - Universidade de Brasï¿½lia
+ *  CIC - Departamento de Ciï¿½ncias da Computaï¿½ï¿½o
  *  Alunos: Igor Silva de Oliveira Cardoso (160125073)
  */
 
@@ -13,12 +13,7 @@
 class TesteDominios {
     private:
         Codigo *codigo;
-        Classe *classe;
-        Descricao *descricao;
-        Endereco *endereco;
         Data *data;
-        Numero *numero;
-        Moeda *moeda;
         Nome *nome;
         Email *email;
         Senha *senha;
@@ -41,9 +36,7 @@ class TesteDominios {
 
 class TesteEntidades {
     private:
-        Imovel *imovel;
-        Proposta *proposta;
-        Usuario *usuario;
+        Participante *participante;
 
         int estado_TesteEntidades;
 

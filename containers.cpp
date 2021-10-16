@@ -10,7 +10,7 @@ ContainerUsuario* ContainerUsuario::getInstancia() {
     return instancia;
 }
 
-bool ContainerUsuario::incluir(Usuario usuario){
+bool ContainerUsuario::incluir(Participante participante){
     for(list<Usuario>::iterator elemento = container.begin(); elemento != container.end(); elemento++){
         if (elemento->getEmail() == usuario.getEmail()){
             return false;
