@@ -36,6 +36,11 @@ class Participante {
         string getNome(void) const{
             return nome.getValor();
         }
+    
+        void setNome(const Nome &nom);
+        string getNome(void) const{
+            return sobrenome.getValor();
+        }
 
         void setEmail(const Email &ema);
         string getEmail(void) const{
@@ -51,7 +56,13 @@ class Participante {
         string getTelefone(void) const{
             return telefone.getValor();
         }
-        
+       
+
+        void setCargo(const Cargo &tel);
+        string getCargo(void) const{
+            return cargo.getValor();
+        }
+    
 };
 
 
