@@ -31,6 +31,7 @@ class ContainerPeca {
     public:
         static ContainerPeca* getInstancia();
         bool incluir(Peca);
+        bool atualizar(Peca);
         void mostraPeca();
 };
 
