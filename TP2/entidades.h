@@ -70,7 +70,7 @@ class Participante {
     
 };
 
-// Defini��es de Usuario
+// Defini��es de Participante
 
 inline void Participante::setMatricula(const Matricula &mat){
     this->matricula = mat;
@@ -98,6 +98,133 @@ inline void Participante::setTelefone(const Telefone &tel){
 
 inline void Participante::setCargo(const Cargo &carg){
     this->cargo = carg;
+}
+
+
+class Sessao {
+    private:
+        Codigo codigo;
+        Data data;
+        Horario horario;
+
+    public:
+        void setCodigo(const Codigo &cod);
+        string getCodigo(void) const{
+            return codigo.getValor();
+        }
+
+        void setData(const Data &dat);
+        string getData(void) const{
+            return data.getValor();
+        }
+    
+        void setHorario(const Horario &hor);
+        string getHorario(void) const{
+            return horario.getValor();
+        }
+    
+};
+
+// Defini��es de Usuario
+
+inline void Sessao::setCodigo(const Codigo &cod){
+    this->codigo = cod;
+}
+
+inline void Sessao::setData(const Data &dat){
+    this->data = dat;
+}
+
+inline void Sessao::setHorario(const Horario &hor){
+    this->horario = hor;
+}
+
+
+
+class Sala {
+    private:
+        Codigo codigo;
+        Nome nome;
+        Capacidade capacidade;
+
+    public:
+        void setCodigo(const Codigo &cod);
+        string getCodigo(void) const{
+            return codigo.getValor();
+        }
+
+        void setNome(const Nome &nom);
+        string getNome(void) const{
+            return nome.getValor();
+        }
+    
+        void setCapacidade(const Capacidade &cap);
+        string getCapacidade(void) const{
+            return capacidade.getValor();
+        }
+    
+};
+
+// Defini��es de Usuario
+
+inline void Sala::setCodigo(const Codigo &cod){
+    this->codigo = cod;
+}
+
+inline void Sala::setNome(const Nome &nom){
+    this->nome = nom;
+}
+
+inline void Sala::setCapacidade(const Capacidade &cap){
+    this->capacidade = cap;
+}
+
+class Peca {
+    private:
+        Codigo codigo;
+        Nome nome;
+        Tipo tipo;
+        Classificacao classificacao;
+
+    public:
+        void setCodigo(const Codigo &cod);
+        string getCodigo(void) const{
+            return codigo.getValor();
+        }
+
+        void setNome(const Nome &nom);
+        string getNome(void) const{
+            return nome.getValor();
+        }
+    
+        void setTipo(const Tipo &tip);
+        string getTipo(void) const{
+            return tipo.getValor();
+        }
+
+        void setClassificacao(const Classificacao &cla);
+        string getClassificacao(void) const{
+            return classificacao.getValor();
+        }
+    
+};
+
+// Defini��es de Usuario
+
+inline void Peca::setCodigo(const Codigo &cod){
+    this->codigo = cod;
+}
+
+inline void Peca::setNome(const Nome &nom){
+    this->nome = nom;
+}
+
+inline void Peca::setTipo(const Tipo &tip){
+    this->tipo = tip;
+}
+
+inline void Peca::setClassificacao(const Classificacao &cla){
+    this->classificacao = cla;
 }
 
 #endif // ENTIDADES_H_INCLUDED
