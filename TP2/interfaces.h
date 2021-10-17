@@ -14,7 +14,7 @@
 
 class IServicoAutenticacao;
 class IServicoPessoal;
-class IServicoProdutosFinanceiros;
+class IServicoProdutosSessao;
 
 //--------------------------------------------------------------------------------------------
 // Declara��es das interfaces da camada de apresenta��o.
@@ -31,16 +31,16 @@ class IApresentacaoPessoal{
         virtual void executar(Email) = 0;
         virtual void cadastrar() = 0;
         virtual void setCntrServicoPessoal(IServicoPessoal*) = 0;
-        virtual void setCntrServicoProdutosFinanceiros(IServicoProdutosFinanceiros*) = 0;
+        virtual void setCntrServicoProdutosFinanceiros(IServicoProdutosSessao*) = 0;
         virtual ~IApresentacaoPessoal(){}
 };
 
-class IApresentacaoProdutosFinanceiros{
+class IApresentacaoProdutosSessao{
     public:
         virtual void executar() = 0;
         virtual void executar(Email) = 0;
-        virtual void setCntrServicoProdutosFinanceiros(IServicoProdutosFinanceiros*) = 0;
-        virtual ~IApresentacaoProdutosFinanceiros(){}
+        virtual void setCntrServicoProdutosFinanceiros(IServicoProdutosSessao*) = 0;
+        virtual ~IApresentacaoProdutosSessao(){}
 };
 
 //--------------------------------------------------------------------------------------------
@@ -58,7 +58,7 @@ public:
         virtual ~IServicoPessoal(){}
 };
 
-class IServicoProdutosFinanceiros{
+class IServicoProdutosSessao{
 public:
         virtual bool cadastrarConta(Conta) = 0;
         virtual bool consultarConta(Conta*) = 0;
@@ -66,7 +66,7 @@ public:
         virtual bool descadastrarProdutoInvestimento(Codigo) = 0;
         virtual bool realizarAplicacao(Aplicacao) = 0;
         virtual bool recuperarAplicacao(Aplicacao*) = 0;                        // Adaptar aos requisitos.
-        virtual ~IServicoProdutosFinanceiros(){}
+        virtual ~IServicoProdutosSessao(){}
 };
 
 #endif // INTERFACES_H_INCLUDED

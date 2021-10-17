@@ -16,12 +16,12 @@ class CntrApresentacaoControle{
         Email email;
         IApresentacaoAutenticacao *cntrApresentacaoAutenticacao;
         IApresentacaoPessoal *cntrApresentacaoPessoal;
-        IApresentacaoProdutosFinanceiros *cntrApresentacaoProdutosFinanceiros;
+        IApresentacaoProdutosSessao *CntrApresentacaoProdutosSessao;
     public:
         void executar();
         void setCntrApresentacaoAutenticacao(IApresentacaoAutenticacao*);
         void setCntrApresentacaoPessoal(IApresentacaoPessoal*);
-        void setCntrApresentacaoProdutosFinanceiros(IApresentacaoProdutosFinanceiros*);
+        void setCntrApresentacaoProdutosSessao(IApresentacaoProdutosSessao*);
 };
 
 inline void CntrApresentacaoControle::setCntrApresentacaoAutenticacao(IApresentacaoAutenticacao *cntr){
@@ -32,8 +32,8 @@ inline void CntrApresentacaoControle::setCntrApresentacaoPessoal(IApresentacaoPe
             cntrApresentacaoPessoal = cntr;
 }
 
-inline void CntrApresentacaoControle::setCntrApresentacaoProdutosFinanceiros(IApresentacaoProdutosFinanceiros *cntr){
-    cntrApresentacaoProdutosFinanceiros = cntr;
+inline void CntrApresentacaoControle::setCntrApresentacaoProdutosSessao(IApresentacaoProdutosSessao *cntr){
+    CntrApresentacaoProdutosSessao = cntr;
 }
 
 //--------------------------------------------------------------------------------------------
@@ -42,7 +42,7 @@ class CntrApresentacaoAutenticacao:public IApresentacaoAutenticacao{
     private:
         IServicoAutenticacao *cntr;
     public:
-        bool autenticar(CPF*);
+        bool autenticar(Email*);
         void setCntrServicoAutenticacao(IServicoAutenticacao*);
 };
 
@@ -55,28 +55,28 @@ inline void CntrApresentacaoAutenticacao::setCntrServicoAutenticacao(IServicoAut
 class CntrApresentacaoPessoal:public IApresentacaoPessoal{
     private:
         IServicoPessoal *cntrServicoPessoal;
-        IServicoProdutosFinanceiros *cntrServicoProdutosFinanceiros;
+        IServicoProdutosSessao *cntrServicoProdutosSessao;
         void consultarDadosPessoais();
     public:
-        void executar(CPF);
+        void executar(Email);
         void cadastrar();
         void setCntrServicoPessoal(IServicoPessoal*);
-        void setCntrServicoProdutosFinanceiros(IServicoProdutosFinanceiros*);
+        void setCntrServicoProdutosSessao(IServicoProdutosSessao*);
 };
 
 inline void CntrApresentacaoPessoal::setCntrServicoPessoal(IServicoPessoal *cntr){
     cntrServicoPessoal = cntr;
 }
 
-inline void CntrApresentacaoPessoal::setCntrServicoProdutosFinanceiros(IServicoProdutosFinanceiros *cntr){
-    cntrServicoProdutosFinanceiros = cntr;
+inline void CntrApresentacaoPessoal::setCntrServicoProdutosSessao(IServicoProdutosSessao *cntr){
+    cntrServicoProdutosSessao = cntr;
 }
 
 //--------------------------------------------------------------------------------------------
 
-class CntrApresentacaoProdutosFinanceiros:public IApresentacaoProdutosFinanceiros{
+class CntrApresentacaoProdutosSessao:public IApresentacaoProdutosSessao{
     private:
-        IServicoProdutosFinanceiros *cntr;
+        IServicoProdutosSessao *cntr;
         void consultarConta();
         void cadastrarProdutoInvestimento();
         void descadastrarProdutoInvestimento();
@@ -85,11 +85,11 @@ class CntrApresentacaoProdutosFinanceiros:public IApresentacaoProdutosFinanceiro
         void listarAplicacoes();
     public:
         void executar();
-        void executar(CPF);
-        void setCntrServicoProdutosFinanceiros(IServicoProdutosFinanceiros*);
+        void executar(Email);
+        void setCntrServicoProdutosSessao(IServicoProdutosSessao*);
 };
 
-inline void CntrApresentacaoProdutosFinanceiros::setCntrServicoProdutosFinanceiros(IServicoProdutosFinanceiros *cntr){
+inline void CntrApresentacaoProdutosSessao::setCntrServicoProdutosSessao(IServicoProdutosSessao *cntr){
     this->cntr = cntr;
 }
 

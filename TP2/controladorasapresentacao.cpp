@@ -45,7 +45,7 @@ void CntrApresentacaoControle::executar(){
         echo();
 
         switch(campo){
-            case 1: if(cntrApresentacaoAutenticacao->autenticar(&cpf)){                         // Solicita autentica��o.
+            case 1: if(cntrApresentacaoAutenticacao->autenticar(&email)){                         // Solicita autentica��o.
                         bool apresentar = true;                                                 // Controle de la�o.
                         while(apresentar){
 
@@ -61,9 +61,9 @@ void CntrApresentacaoControle::executar(){
                             echo();
 
                             switch(campo){
-                                case 1: cntrApresentacaoPessoal->executar(cpf);                 // Solicita servi�o de pessoal.
+                                case 1: cntrApresentacaoPessoal->executar(email);                 // Solicita servi�o de pessoal.
                                         break;
-                                case 2: cntrApresentacaoProdutosFinanceiros->executar(cpf);     // Solicita servi�o de produto financeiro.
+                                case 2: cntrApresentacaoProdutosFinanceiros->executar(email);     // Solicita servi�o de produto financeiro.
                                         break;
                                 case 3: apresentar = false;
                                         break;
@@ -91,11 +91,11 @@ void CntrApresentacaoControle::executar(){
 
 //--------------------------------------------------------------------------------------------
 
-bool CntrApresentacaoAutenticacao::autenticar(CPF *cpf){
+bool CntrApresentacaoAutenticacao::autenticar(Email *email){
 
     // Mensagens a serem apresentadas na tela de autentica��o.
 
-    char texto1[]="Digite o CPF  : ";
+    char texto1[]="Digite o Email  : ";
     char texto2[]="Digite a senha: ";
     char texto3[]="Dado em formato incorreto. Digite algo.";
 
@@ -123,7 +123,7 @@ bool CntrApresentacaoAutenticacao::autenticar(CPF *cpf){
         getstr(campo2);                                                                         // L� valor do campo.
 
         try{
-            cpf->setValor(string(campo1));                                                      // Atribui valor ao CPF.
+            email->setValor(string(campo1));                                                      // Atribui valor ao CPF.
             senha.setValor(string(campo2));                                                     // Atribui Valor � senha.
             break;                                                                              // Abandona la�o em caso de formatos corretos.
         }
@@ -135,17 +135,17 @@ bool CntrApresentacaoAutenticacao::autenticar(CPF *cpf){
             echo();
         }
     }
-    return (cntr->autenticar(*cpf, senha));                                                     // Solicita servi�o de autentica��o.
+    return (cntr->autenticar(*email, senha));                                                     // Solicita servi�o de autentica��o.
 }
 
 //--------------------------------------------------------------------------------------------
 
-void CntrApresentacaoPessoal::executar(CPF cpf){
+void CntrApresentacaoPessoal::executar(Email email){
 
     // Mensagens a serem apresentadas na tela de sele��o de servi�o..
 
     char texto1[]="Selecione um dos servicos : ";
-    char texto2[]="1 - Consultar dados pessoais.";
+    char texto2[]="1 - Consultar dados sessões.";
     char texto3[]="2 - Retornar.";
 
     int campo;                                                                                  // Campo de entrada.
@@ -187,13 +187,12 @@ void CntrApresentacaoPessoal::cadastrar(){
 
     char texto1[] ="Preencha os seguintes campos: ";
     char texto2[] ="Nome            :";
-    char texto3[] ="Endereco        :";
-    char texto4[] ="CEP             :";
-    char texto5[] ="CPF             :";
+    char texto3[] ="Sobrenome       :";
+    char texto4[] ="Matricula       :";
+    char texto5[] ="Email           :";
     char texto6[] ="Senha           :";
-    char texto7[] ="Numero de conta :";
-    char texto8[] ="Agencia         :";
-    char texto9[] ="Banco           :";
+    char texto7[] ="Telefone        :";
+    char texto8[] ="Cargo           :";
     char texto10[]="Dados em formato incorreto. Digite algo.";
     char texto11[]="Sucesso no cadastramento. Digite algo.";
     char texto12[]="Falha no cadastramento. Digite algo.";
@@ -203,14 +202,17 @@ void CntrApresentacaoPessoal::cadastrar(){
 
     // Instancia os dom�nios.
 
+    Matricula matricula;
     Nome nome;
-    Endereco endereco;
-    CEP cep;
-    CPF cpf;
+    Nome sobrenome;
+    Email email;
     Senha senha;
-    Numero numero;
-    Agencia agencia;
-    Banco banco;
+    Telefone telefone;
+    Codigo codigo;
+    Cargo cargo;
+    Classificacao classificacao;
+    Tipo tipo;
+
 
     int linha,coluna;                                                                           // Dados sobre tamanho da tela.
 
@@ -234,19 +236,16 @@ void CntrApresentacaoPessoal::cadastrar(){
     mvprintw(linha/4 + 12,coluna/4,"%s",texto7);                                                // Imprime nome do campo.
     getstr(campo6);                                                                             // L� valor do campo.
     mvprintw(linha/4 + 14,coluna/4,"%s",texto8);                                                // Imprime nome do campo.
-    getstr(campo7);                                                                             // L� valor do campo.
-    mvprintw(linha/4 + 16,coluna/4,"%s",texto9);                                                // Imprime nome do campo.
-    getstr(campo8);                                                                             // L� valor do campo.
+    getstr(campo7);                                                                             // L� valor do campo.                                                                          // L� valor do campo.
 
     try{
         nome.setValor(string(campo1));
-        endereco.setValor(string(campo2));
-        cep.setValor(string(campo3));
-        cpf.setValor(string(campo4));
+        sobrenome.setValor(string(campo2));
+        matricula.setValor(string(campo3));
+        email.setValor(string(campo4));
         senha.setValor(string(campo5));
-        numero.setValor(string(campo6));
-        agencia.setValor(string(campo7));
-        banco.setValor(string(campo8));
+        telefone.setValor(string(campo6));
+        cargo.setValor(string(campo7));
     }
     catch(invalid_argument &exp){
         mvprintw(linha/4 + 18,coluna/4,"%s",texto10);                                           // Informa formato incorreto.
@@ -258,25 +257,25 @@ void CntrApresentacaoPessoal::cadastrar(){
 
     // Instancia e inicializa entidades.
 
-    Usuario usuario;
+    Participante participante;
 
-    usuario.setNome(nome);
-    usuario.setEndereco(endereco);
-    usuario.setCEP(cep);
-    usuario.setCPF(cpf);
-    usuario.setSenha(senha);
+    participante.setNome(nome);
+    participante.setMatricula(matricula);
+    participante.setTelefone(telefone);
+    participante.setEmail(email);
+    participante.setSenha(senha);
 
-    Conta conta;
+    Peca peca;
 
-    conta.setNumero(numero);
-    conta.setAgencia(agencia);
-    conta.setBanco(banco);
-    conta.setCPF(cpf);
+    peca.setCodigo(codigo);
+    peca.setNome(nome);
+    peca.setTipo(tipo);
+    peca.setClassificacao(classificacao);
 
     // Cadastra usu�rio e conta.
 
-    if(cntrServicoPessoal->cadastrarUsuario(usuario))
-        if(cntrServicoProdutosFinanceiros->cadastrarConta(conta)){
+    if(cntrServicoPessoal->cadastrarUsuario(peca))
+        if(cntrServicoProdutosSessao->cadastrarConta(peca)){
             mvprintw(linha/4 + 18,coluna/4,"%s",texto11);                                               // Informa sucesso.
             noecho();
             getch();
