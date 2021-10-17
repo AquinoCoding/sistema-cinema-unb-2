@@ -46,18 +46,6 @@ bool ContainerParticipante::pesquisar(Email email, Senha senha){
 }
 
 
-bool ContainerParticipante::atualizar(Participante Participante){
-    for(list<Participante>::iterator elemento = container.begin(); elemento != container.end(); elemento++){
-        if (elemento->getCPF().getValor() == Participante.getCPF().getValor()){
-            elemento->setEndereco(Participante.getEndereco());
-            elemento->setCEP(Participante.getCEP());
-            elemento->setSenha(Participante.getSenha());
-            return true;
-        }
-    }
-    return false;
-}
-
 void ContainerParticipante::mostrarTipos() {
     int cont = 1;
 
@@ -97,18 +85,27 @@ bool ContainerPeca::incluir(Peca peca){
     return true;
 }
 
+
+bool ContainerPeca::atualizar(Peca peca){
+    for(list<Peca>::iterator elemento = container.begin(); elemento != container.end(); elemento++){
+        if (elemento->getCodigo().getValor() == peca.getCodigo().getValor()){
+            elemento->setEndereco(peca.getEndereco());
+            elemento->setCEP(peca.getCEP());
+            elemento->setSenha(peca.getSenha());
+            return true;
+        }
+    }
+    return false;
+}
+
 void ContainerPeca::mostrarTipos() {
     int cont = 1;
 
     for(list<Peca>::iterator elemento = container.begin(); elemento != container.end(); elemento++){
         cout << "\n\nPeca " << cont << endl;
         cout << "\tCodigo: " << elemento->getCodigo() << endl;
-        cout << "\tDescricao: " << elemento->getDescricao() << endl;
-        cout << "\tEndereco: " << elemento->getEndereco() << endl;
-        cout << "\tNumero maximo de hospedes: " << elemento->getHospedes() << endl;
-        cout << "\tData Inicial de disponibilidade: " << elemento->getDataInicial() << endl;
-        cout << "\tNumero maximo de hospedes: " << elemento->getDataFinal() << endl;
-        cout << "\tValor: " << elemento->getValor() << endl;
+        cout << "\tTipo: " << elemento->getTipo() << endl;
+        cout << "\tClassificacao: " << elemento->getClassificacao() << endl;
         cout << "--------------------------------------------------\n";
 
         cont++;
@@ -142,14 +139,10 @@ void ContainerSessao::mostrarTipos() {
     int cont = 1;
 
     for(list<Sessao>::iterator elemento = container.begin(); elemento != container.end(); elemento++){
-        cout << "\n\n\tImovel " << cont << endl;
+        cout << "\n\n\tSessao " << cont << endl;
         cout << "\tCodigo: " << elemento->getCodigo() << endl;
-        cout << "\tDescricao: " << elemento->getDescricao() << endl;
-        cout << "\tEndereco: " << elemento->getEndereco() << endl;
-        cout << "\tNumero maximo de hospedes: " << elemento->getHospedes() << endl;
-        cout << "\tData Inicial de disponibilidade: " << elemento->getDataInicial() << endl;
-        cout << "\tNumero maximo de hospedes: " << elemento->getDataFinal() << endl;
-        cout << "\tValor: " << elemento->getValor() << endl;
+        cout << "\tData: " << elemento->getData() << endl;
+        cout << "\tHorario: " << elemento->getHorario() << endl;
         cout << "--------------------------------------------------\n";
 
         cont++;
@@ -179,18 +172,13 @@ bool ContainerSala::incluir(Sala sala){
     return true;
 }
 
-void ContainerSessao::mostrarTipos() {
+void ContainerSala::mostrarTipos() {
     int cont = 1;
 
-    for(list<Sessao>::iterator elemento = container.begin(); elemento != container.end(); elemento++){
-        cout << "\n\n\tImovel " << cont << endl;
+    for(list<Sala>::iterator elemento = container.begin(); elemento != container.end(); elemento++){
+        cout << "\n\n\tSala " << cont << endl;
         cout << "\tCodigo: " << elemento->getCodigo() << endl;
-        cout << "\tDescricao: " << elemento->getDescricao() << endl;
-        cout << "\tEndereco: " << elemento->getEndereco() << endl;
-        cout << "\tNumero maximo de hospedes: " << elemento->getHospedes() << endl;
-        cout << "\tData Inicial de disponibilidade: " << elemento->getDataInicial() << endl;
-        cout << "\tNumero maximo de hospedes: " << elemento->getDataFinal() << endl;
-        cout << "\tValor: " << elemento->getValor() << endl;
+        cout << "\tNome: " << elemento->getNome() << endl;
         cout << "--------------------------------------------------\n";
 
         cont++;
